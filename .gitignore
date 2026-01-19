@@ -1,0 +1,29 @@
+# Build artifacts
+build/
+*.o
+*.a
+*.so
+*.dylib
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+
+# Data directories
+data/aof/*
+data/rdb/*
+!data/aof/.gitkeep
+!data/rdb/.gitkeep
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
