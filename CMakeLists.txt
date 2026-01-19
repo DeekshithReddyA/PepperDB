@@ -13,3 +13,5 @@ add_executable(pepperdb
 
     common/utility.cpp
 )
+
+target_include_directories(pepperdb PRIVATE common)

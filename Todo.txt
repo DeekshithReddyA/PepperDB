@@ -1,0 +1,7 @@
+### current progress
+1. make common/Utility link correctly and work 
+
+Todo
+
+1. Create a Utility.cpp which contains print method to print data structures.. 
+     (use templates/generics) - to be learnt

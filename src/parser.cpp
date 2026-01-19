@@ -1,4 +1,5 @@
 #include "parser.hpp"
+#include "utility.hpp"
 
 std::string parser(std::string line){
     std::vector<std::string> tokens;
@@ -12,7 +13,7 @@ std::string parser(std::string line){
 
 
     for(auto i : tokens){
-        std::cout << i <<  " ";
+        print(i);
     }
 
     std::cout << std::endl;
