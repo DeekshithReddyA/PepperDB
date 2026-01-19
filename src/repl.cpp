@@ -1,0 +1,31 @@
+#include "repl.hpp"
+#include "parser.hpp"
+
+void runRepl(){
+    std::cout << "PepperDB booted\n";
+    std::cout << "Type 'exit' or 'quit' to leave. \n";
+
+    std::string line;
+
+    while(true){
+        std::cout << "pepperdb>" << std::flush;
+
+        if(!std::getline(std::cin , line)){
+            std::cout << '\n';
+            break;
+        }
+
+        if(line == "exit" || line == "quit"){
+            break;
+        }
+
+        if(line.empty()) continue;
+        
+        std::string ans = parser(line);
+
+        std::cout << ans << std::endl;
+        
+    }
+
+    std::cout << "PepperDB shutdown\n";
+}

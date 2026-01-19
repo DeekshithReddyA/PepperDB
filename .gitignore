@@ -1,9 +1,8 @@
 # Build artifacts
 build/
 *.o
-*.a
-*.so
-*.dylib
+*.out
+*.log
 
 # CMake
 CMakeCache.txt
@@ -14,16 +13,8 @@ Makefile
 # Data directories
 data/aof/*
 data/rdb/*
-!data/aof/.gitkeep
-!data/rdb/.gitkeep
 
 # IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
 
-# OS
-.DS_Store
-Thumbs.db

@@ -1,22 +1,24 @@
-# PepperDB Specification
+## v0 commands
 
-## Overview
+SET key value
 
-This document outlines the specification for PepperDB.
+GET key
 
-## Architecture
+DEL key
 
-### Core Components
+INFO
 
-- **Store**: Data storage layer
-- **Engine**: Query execution engine
-- **Expiry**: Key expiration management
-- **Common**: Shared utilities
 
-### CLI
+## Output Behavior
 
-- **REPL**: Interactive command-line interface
+GET missing → print (nil)
 
-## Features
+DEL missing → print 0
 
-(To be documented)
+DEL existing → print 1
+
+SET → print OK
+
+## Notes
+
+“Single-threaded, in-memory, string→string store (for now).”
