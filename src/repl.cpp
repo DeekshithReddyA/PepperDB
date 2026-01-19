@@ -21,9 +21,9 @@ void runRepl(){
 
         if(line.empty()) continue;
         
-        std::string ans = parser(line);
+        std::vector<std::string> tokens = parser(line);
 
-        std::cout << ans << std::endl;
+        std::cout << "tokens parsed (checked for whitespaces)" << '\n';
         
     }
 

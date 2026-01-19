@@ -1,7 +1,13 @@
 ### current progress
-1. make common/Utility link correctly and work 
+1. make store.cpp work correctly \\ learn about copy move constructors.. singleton pattern
 
 Todo
 
-1. Create a Utility.cpp which contains print method to print data structures.. 
-     (use templates/generics) - to be learnt
+1. create a globalstore to store data/data structures and functions 
+
+2. 
+Input	               Output
+PING	               PONG
+ECHO hello world	   hello world
+HELP	               list commands
+SET a 10	           ERR unknown command (for now)

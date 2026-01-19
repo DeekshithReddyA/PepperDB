@@ -4,4 +4,4 @@
 #include<vector>
 #include<sstream>
 
-std::string parser(std::string line);
+std::vector<std::string> parser(std::string line);
