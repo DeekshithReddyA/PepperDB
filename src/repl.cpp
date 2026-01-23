@@ -1,5 +1,6 @@
 #include "repl.hpp"
 #include "parser.hpp"
+#include "executer.hpp"
 
 void runRepl(){
     std::cout << "PepperDB booted\n";
@@ -24,6 +25,8 @@ void runRepl(){
         std::vector<std::string> tokens = parser(line);
 
         std::cout << "tokens parsed (checked for whitespaces)" << '\n';
+        
+        executeCommand(tokens);
         
     }
 

@@ -10,6 +10,8 @@ add_executable(pepperdb
     src/main.cpp
     src/repl.cpp
     src/parser.cpp
+    src/database.cpp
+    src/executer.cpp
 
     common/utility.cpp
 )
