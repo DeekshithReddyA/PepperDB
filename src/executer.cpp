@@ -3,6 +3,11 @@
 
 
 std::string executeCommand(std::vector<std::string>& tokens){
+
+    if(tokens.size() < 2){
+        return "Invalid command";
+    }
+
     std::string command = tokens[0];
     Database& db = Database::GetInstance();
 
@@ -37,5 +42,5 @@ std::string executeCommand(std::vector<std::string>& tokens){
             return "0";
         }
     } 
-    return "";
+    return "Invalid Command";
 }

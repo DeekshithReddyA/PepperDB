@@ -23,8 +23,8 @@ void runRepl(){
         if(line.empty()) continue;
         
         std::vector<std::string> tokens = parser(line);
-        if(tokens.size() == 0) continue;
-        
+        if(tokens.size() == 0) continue; 
+
         
         std::cout << executeCommand(tokens) << "\n";
         
