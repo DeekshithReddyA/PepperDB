@@ -13,8 +13,12 @@ private:
     
 public:
     static Database& GetInstance();
-    void set(std::string key, std::string value);
-    std::optional<std::string> get(std::string key);
+    void set(const std::string& key, const std::string& value);
+    std::optional<std::string> get(const std::string& key);
     void print();
-    bool deleteKey(std::string key);
+    bool deleteKey(const std::string& key);
+    bool isExists(const std::string& key);
+    int count();
+    std::vector<std::string> keys();
+    void clear();
 };

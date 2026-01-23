@@ -9,14 +9,18 @@ void runRepl(){
     std::string line;
 
     while(true){
-        std::cout << "pepperdb>" << std::flush;
+        std::cout << "pepperdb> " << std::flush;
 
         if(!std::getline(std::cin , line)){
             std::cout << '\n';
             break;
         }
 
-        if(line == "exit" || line == "quit"){
+        std::string temp = line;
+
+        std::transform(temp.begin(), temp.end(), temp.begin(), ::toupper);
+        
+        if(temp == "EXIT" || temp == "QUIT"){
             break;
         }
 

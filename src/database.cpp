@@ -7,14 +7,12 @@ Database& Database::GetInstance(){
     return instance;
 }
 
-void Database::set(std::string key, std::string value){
+void Database::set(const std::string& key, const std::string& value){
     store[key] = value;
 }
 
-std::optional<std::string> Database::get(std::string key){
-    if(store.find(key) == store.end()){
-        return std::nullopt;
-    }
+std::optional<std::string> Database::get(const std::string& key){
+    if(!Database::isExists(key)) return std::nullopt;
 
     return store[key];
 }
@@ -25,7 +23,7 @@ void Database::print(){
     }
 }
 
-bool Database::deleteKey(std::string key){
+bool Database::deleteKey(const std::string& key){
     std::optional<std::string> res = Database::get(key);
 
     if(res){
@@ -36,3 +34,27 @@ bool Database::deleteKey(std::string key){
     }
 }
 
+bool Database::isExists(const std::string& key){
+    if(store.find(key) != store.end()) return true;
+
+    return false;
+}
+
+int Database::count(){
+    return store.size();
+}
+
+std::vector<std::string> Database::keys(){
+    std::vector<std::string> ans;
+
+    for(auto it : store){
+        ans.push_back(it.first);
+    }
+
+
+    return ans;
+}
+
+void Database::clear(){
+    store.clear();
+}
