@@ -23,10 +23,10 @@ void runRepl(){
         if(line.empty()) continue;
         
         std::vector<std::string> tokens = parser(line);
-
-        std::cout << "tokens parsed (checked for whitespaces)" << '\n';
+        if(tokens.size() == 0) continue;
         
-        executeCommand(tokens);
+        
+        std::cout << executeCommand(tokens) << "\n";
         
     }
 

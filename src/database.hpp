@@ -3,6 +3,8 @@
 #include<vector>
 #include<unordered_map>
 #include<string>
+#include<optional>
+#include<iostream>
 
 class Database{
 private:
@@ -12,5 +14,7 @@ private:
 public:
     static Database& GetInstance();
     void set(std::string key, std::string value);
-    std::string get(std::string key);
+    std::optional<std::string> get(std::string key);
+    void print();
+    bool deleteKey(std::string key);
 };
