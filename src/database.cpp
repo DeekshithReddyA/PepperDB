@@ -7,11 +7,12 @@ Database& Database::GetInstance(){
     return instance;
 }
 
-void Database::set(const std::string& key, const std::string& value){
-    store[key] = value;
+void Database::set(const std::string& key, const std::string& value,const std::optional<time_t> expiry){
+    ValueWithExpiry val {value, expiry};
+    store[key] = val;
 }
 
-std::optional<std::string> Database::get(const std::string& key){
+std::optional<ValueWithExpiry> Database::get(const std::string& key){
     if(!Database::isExists(key)) return std::nullopt;
 
     return store[key];
@@ -19,12 +20,16 @@ std::optional<std::string> Database::get(const std::string& key){
 
 void Database::print(){
     for(auto it : store){
-        std::cout << it.first << " : " << it.second << "\n";
+        std::cout << it.first << " : " << it.second.value;
+        if(it.second.expires_at){
+            std::cout << it.second.expires_at.value();
+        }
+        std::cout << "\n";
     }
 }
 
 bool Database::deleteKey(const std::string& key){
-    std::optional<std::string> res = Database::get(key);
+    std::optional<ValueWithExpiry> res = Database::get(key);
 
     if(res){
         store.erase(key);

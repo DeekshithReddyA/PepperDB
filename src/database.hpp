@@ -5,16 +5,22 @@
 #include<string>
 #include<optional>
 #include<iostream>
+#include<ctime>
+
+struct ValueWithExpiry{
+    std::string value;
+    std::optional<time_t> expires_at;  
+};
 
 class Database{
 private:
-    std::unordered_map<std::string, std::string> store;
+    std::unordered_map<std::string, ValueWithExpiry> store;
     Database() {}
     
 public:
     static Database& GetInstance();
-    void set(const std::string& key, const std::string& value);
-    std::optional<std::string> get(const std::string& key);
+    void set(const std::string& key, const std::string& value, const std::optional<time_t> expiry);
+    std::optional<ValueWithExpiry> get(const std::string& key);
     void print();
     bool deleteKey(const std::string& key);
     bool isExists(const std::string& key);
