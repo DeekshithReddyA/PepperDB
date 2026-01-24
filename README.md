@@ -41,6 +41,8 @@ PepperDB supports the following commands:
 | Command | Description | Example |
 |---------|-------------|---------|
 | `SET key value` | Set a key to hold a string value | `SET name John` |
+| `SET key value EX seconds` | Set a key with an expiration time in seconds | `SET session token abc123 EX 60` |
+| `TTL key` | Get the time-to-live for a key | `TTL session` |
 | `GET key` | Get the value of a key | `GET name` |
 | `DEL key` | Delete a key | `DEL name` |
 | `EXISTS key` | Check if a key exists | `EXISTS name` |
@@ -68,6 +70,12 @@ pepperdb> DEL greeting
 (integer) 1
 pepperdb> GET greeting
 (nil)
+pepperdb> SET session_token abc123 EX 100
+OK
+pepperdb> TTL session_token
+(integer) 100
+pepperdb> TTL greeting
+(integer) -2
 pepperdb> EXIT
 PepperDB shutdown
 ```

@@ -1,0 +1,7 @@
+### Current progress..
+
+Added EX, TTL
+
+### TODO:
+Have to add Expiry, persist keys/commands.
+
