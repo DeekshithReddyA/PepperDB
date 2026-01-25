@@ -161,6 +161,49 @@ std::string executeCommand(std::vector<std::string>& tokens){
         }
 
         return "(integer) -2";
+    } else if(command == "EXPIRE"){
+        if(tokens.size() != 3) return "(err) Invalid arguements";
+
+        std::string key = tokens[1];
+        std::string timeStr = tokens[2];
+
+        for(char c : timeStr){
+            if(c < '0' || c > '9'){
+                return "(error) ERR invalid expire time in 'expire' command";
+            }
+        }
+
+        int time = std::stoi(timeStr);
+
+        std::optional<ValueWithExpiry> res = db.get(key);
+
+        if(res){
+            std::optional<time_t> expiry = std::time(nullptr) + time;
+
+            db.set(key, res.value().value, expiry);
+
+            return "(integer) 1";
+        }
+
+        return "(integer) 0";
+    } else if(command == "PERSIST"){
+        if(tokens.size() != 2) return "(err) Invalid arguements";
+
+        std::string key = tokens[1];
+
+        std::optional<ValueWithExpiry> res = db.get(key);
+        
+        if(res){
+            int timeLeft = checkTime(res.value().expires_at, db);
+            if(timeLeft < 0){
+                return "(integer) 0";
+            } else {
+                db.set(key, res.value().value, std::nullopt);   
+                return "(integer) 1";
+            }
+        }
+
+        return "(integer) 0";
     }
 
 
