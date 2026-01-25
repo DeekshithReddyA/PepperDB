@@ -15,6 +15,7 @@ struct ValueWithExpiry{
 class Database{
 private:
     std::unordered_map<std::string, ValueWithExpiry> store;
+    double nSamples = 0.25;
     Database() {}
     
 public:
@@ -27,4 +28,5 @@ public:
     int count();
     std::vector<std::string> keys();
     void clear();
+    void expiry_cycle();
 };

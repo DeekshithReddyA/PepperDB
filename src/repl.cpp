@@ -10,12 +10,13 @@ void runRepl(){
 
     while(true){
         std::cout << "pepperdb> " << std::flush;
-
+        
         if(!std::getline(std::cin , line)){
             std::cout << '\n';
             break;
         }
-
+        Database::GetInstance().expiry_cycle();
+        
         std::string temp = line;
 
         std::transform(temp.begin(), temp.end(), temp.begin(), ::toupper);

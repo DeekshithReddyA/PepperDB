@@ -63,3 +63,27 @@ std::vector<std::string> Database::keys(){
 void Database::clear(){
     store.clear();
 }
+
+void Database::expiry_cycle(){
+    int sampleSize = std::max(1, static_cast<int>(nSamples * store.size()));
+    std::vector<std::string> keysList = this->keys();
+
+    auto it = store.begin();
+    while(sampleSize-- && !store.empty()){
+        if(it == store.end()){
+            it = store.begin();
+        }
+
+        std::string key = it->first;
+        std::optional<time_t> expiry = it->second.expires_at;
+
+        if(expiry){
+            time_t currentTime = std::time(nullptr);
+            if(currentTime >= expiry.value()){
+                store.erase(it++);
+                continue;
+            }
+        }
+        ++it;
+    }
+}

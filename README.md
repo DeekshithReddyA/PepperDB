@@ -43,6 +43,8 @@ PepperDB supports the following commands:
 | `SET key value` | Set a key to hold a string value | `SET name John` |
 | `SET key value EX seconds` | Set a key with an expiration time in seconds | `SET session token abc123 EX 60` |
 | `TTL key` | Get the time-to-live for a key | `TTL session` |
+| `PERSIST key` | Remove the expiration from a key | `PERSIST session` |
+| `EXPIRE key seconds` | Set a key to expire after a certain number of seconds | `EXPIRE session 120` |
 | `GET key` | Get the value of a key | `GET name` |
 | `DEL key` | Delete a key | `DEL name` |
 | `EXISTS key` | Check if a key exists | `EXISTS name` |
@@ -74,6 +76,10 @@ pepperdb> SET session_token abc123 EX 100
 OK
 pepperdb> TTL session_token
 (integer) 100
+pepperdb> PERSIST session_token
+(integer) 1
+pepperdb> EXPIRE session_token 120
+(integer) 1
 pepperdb> TTL greeting
 (integer) -2
 pepperdb> EXIT
