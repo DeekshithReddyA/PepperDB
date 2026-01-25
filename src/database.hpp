@@ -15,7 +15,7 @@ struct ValueWithExpiry{
 class Database{
 private:
     std::unordered_map<std::string, ValueWithExpiry> store;
-    double nSamples = 0.25;
+    double nSamples = 0.10; // 10% of keys will be sampled in each expiry cycle
     Database() {}
     
 public:

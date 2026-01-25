@@ -33,6 +33,7 @@ make
 - **Simple Command Interface**: Redis-like syntax for ease of use
 - **Lightweight**: Minimal dependencies and resource footprint
 - **Interactive REPL**: Built-in command-line interface
+- **Active/Passive cleanup**: Efficient expiration management for keys
 
 ## 🔧 Commands
 
