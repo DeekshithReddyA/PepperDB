@@ -1,7 +1,4 @@
-### Current progress..
+TODO:
 
-Added EX, TTL
-
-### TODO:
-Have to add Expiry, persist keys/commands.
-
+persistence
+AOF file
