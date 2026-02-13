@@ -1,4 +1,12 @@
 TODO:
 
+HIGH PRIORITY: Restructure everything to follow best Design Principles and add comments to it.
+(executor returns and simple string, but we would like to have it return a data structure which
+gives more information so that it becomes to integrate AOF easily)
+(the executor code should change a lot like creating interface for the commands)
+(AOF should be within persistence/recovery strategy because there are multiple strategies that we might use...
+So create an interface for strategy ) ** LOW PRIORITY ** 
+
+
 persistence
 AOF file
