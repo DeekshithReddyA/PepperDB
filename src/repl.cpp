@@ -1,13 +1,15 @@
 #include "repl.hpp"
 #include "parser.hpp"
 #include "executer.hpp"
+#include "aof.hpp"
 
 void runRepl(){
     std::cout << "PepperDB booted\n";
     std::cout << "Type 'exit' or 'quit' to leave. \n";
-
+    
     std::string line;
-
+    
+    AOF& aofInstance = AOF::GetInstance();
     while(true){
         std::cout << "pepperdb> " << std::flush;
         
@@ -32,6 +34,8 @@ void runRepl(){
 
         
         std::cout << executeCommand(tokens) << "\n";
+
+        aofInstance.appendCommand(line);
         
     }
 

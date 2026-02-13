@@ -12,6 +12,7 @@ add_executable(pepperdb
     src/parser.cpp
     src/database.cpp
     src/executer.cpp
+    src/aof.cpp
 )
 
 target_include_directories(pepperdb PRIVATE common)
